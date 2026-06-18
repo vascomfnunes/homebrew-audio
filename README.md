@@ -17,6 +17,7 @@ brew install --cask wavelab
 | `wavelab`              | Steinberg WaveLab audio editing/mastering suite   |
 | `korg-software-pass`   | Manager for activating and updating KORG software |
 | `plugin-alliance-installation-manager` | Manager for installing/updating Plugin Alliance plugins |
+| `roland-cloud-manager` | Manager for installing/updating Roland Cloud instruments and effects |
 
 ## Notes
 
@@ -34,3 +35,8 @@ brew install --cask wavelab
   shortcut renames the lone extracted file before checking the nested path).
   Actual install/uninstall works correctly; this is a known false positive,
   not a defect in the cask.
+- `roland-cloud-manager` ships a GUI installer wizard (no silent/CLI install
+  flag), so the cask uses `installer manual:` — `brew install` mounts the
+  dmg and prints the path to open and run by hand; it doesn't install
+  unattended. Uninstalling removes a root-owned app, so `brew uninstall`
+  needs an interactive `sudo` prompt.
