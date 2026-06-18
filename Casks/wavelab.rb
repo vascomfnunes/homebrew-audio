@@ -11,7 +11,7 @@ cask "wavelab" do
     skip "Steinberg download links are session-specific; bump manually on new releases"
   end
 
-  depends_on macos: ">= :big_sur"
+  depends_on macos: :big_sur
 
   pkg "WaveLab 13.pkg"
 
