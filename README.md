@@ -16,6 +16,7 @@ brew install --cask wavelab
 | ---------------------- | ------------------------------------------------- |
 | `wavelab`              | Steinberg WaveLab audio editing/mastering suite   |
 | `korg-software-pass`   | Manager for activating and updating KORG software |
+| `plugin-alliance-installation-manager` | Manager for installing/updating Plugin Alliance plugins |
 
 ## Notes
 
@@ -26,3 +27,10 @@ brew install --cask wavelab
 - KORG's download URL is a fixed redirect that always serves the latest
   installer, so it can't be used to detect new versions automatically either.
   Update the `korg-software-pass` cask manually when KORG ships a new build.
+- `plugin-alliance-installation-manager` ships as a zip wrapping a versioned
+  dmg; `brew audit --cask --strict` fails on it with a benign
+  `rb_sysopen`/`No such file or directory` error due to a Homebrew audit-tool
+  quirk with single-file zip-nested-dmg containers (its internal extraction
+  shortcut renames the lone extracted file before checking the nested path).
+  Actual install/uninstall works correctly; this is a known false positive,
+  not a defect in the cask.
