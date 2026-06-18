@@ -15,6 +15,8 @@ cask "xln-online-installer" do
          "directly. Bump manually on new releases."
   end
 
+  auto_updates true
+
   app "XLN Online Installer.app"
 
   uninstall quit:   "com.xlnaudio.xlnonlineinstaller",
