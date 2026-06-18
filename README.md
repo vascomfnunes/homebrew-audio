@@ -20,6 +20,10 @@ brew install --cask wavelab
 | `roland-cloud-manager` | Manager for installing/updating Roland Cloud instruments and effects |
 | `ssl-download-manager` | Manager for installing/updating Solid State Logic plugins |
 | `xln-online-installer` | Manager for installing/updating XLN Audio products |
+| `blackhole` | Eventide reverb plugin (VST3/AU/AAX) |
+| `blackhole-immersive` | Eventide immersive/spatial reverb plugin (VST3/AU/AAX) |
+| `fixate-midrange` | Newfangled Audio (Eventide) dynamic midrange EQ plugin (VST3/AU/AAX) |
+| `micropitch` | Eventide stereo pitch-shifting/doubling plugin (VST3/AU/AAX) |
 
 ## Notes
 
@@ -55,3 +59,15 @@ brew install --cask wavelab
   percent-encoded S3 URL instead. That URL embeds the version, so it goes
   stale on new releases — update `version`, `url`, and `sha256` manually,
   same as `wavelab`.
+- `blackhole`, `blackhole-immersive`, `fixate-midrange`, and `micropitch` are
+  Eventide/Newfangled Audio plugins shipped as BitRock InstallBuilder
+  installer apps with no GUI fallback needed: they support a real silent
+  install via `installbuilder.sh --mode unattended`, so the casks use
+  `installer script:` with `sudo: true` (same pattern as Homebrew's own
+  `audio-modeling-software-center`/`izotope-product-portal` casks).
+  Uninstall calls the per-product uninstaller Eventide installs at
+  `/Applications/Eventide/Uninstallers/Uninstall <Name>.app`, same flags.
+  Eventide's download pages (e.g.
+  `eventideaudio.com/downloads/blackhole-installer-mac-64-bit/`) 302-redirect
+  to a versioned CDN URL; the casks point at that resolved URL directly, so
+  bump `version`/`url`/`sha256` manually on new releases.
