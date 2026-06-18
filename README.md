@@ -18,6 +18,7 @@ brew install --cask wavelab
 | `korg-software-pass`   | Manager for activating and updating KORG software |
 | `plugin-alliance-installation-manager` | Manager for installing/updating Plugin Alliance plugins |
 | `roland-cloud-manager` | Manager for installing/updating Roland Cloud instruments and effects |
+| `ssl-download-manager` | Manager for installing/updating Solid State Logic plugins |
 
 ## Notes
 
@@ -40,3 +41,8 @@ brew install --cask wavelab
   dmg and prints the path to open and run by hand; it doesn't install
   unattended. Uninstalling removes a root-owned app, so `brew uninstall`
   needs an interactive `sudo` prompt.
+- `ssl-download-manager`'s upstream `Info.plist` declares `LSMinimumSystemVersion
+  12.0`, which triggers a Homebrew audit bug (`undefined method '>' for nil`
+  in `audit_min_os`) on casks that omit `depends_on macos:`. Worked around
+  by declaring `depends_on macos: :monterey` explicitly, which is accurate
+  anyway.
