@@ -24,6 +24,11 @@ brew install --cask wavelab
 | `blackhole-immersive` | Eventide immersive/spatial reverb plugin (VST3/AU/AAX) |
 | `fixate-midrange` | Newfangled Audio (Eventide) dynamic midrange EQ plugin (VST3/AU/AAX) |
 | `micropitch` | Eventide stereo pitch-shifting/doubling plugin (VST3/AU/AAX) |
+| `tape` | Softube analog tape machine emulation plugin (VST/VST3/AU/AAX) |
+| `dirty-tape` | Softube lo-fi tape distortion and saturation plugin (VST/VST3/AU/AAX) |
+| `acoustic-feedback` | Softube guitar feedback simulation plugin (VST/VST3/AU/AAX) |
+| `clipper` | Softube peak-clipping plugin for mixing and mastering (VST/VST3/AU/AAX) |
+| `transient-shaper` | Softube dual-band attack/decay shaping plugin (VST/VST3/AU/AAX) |
 
 ## Notes
 
@@ -71,3 +76,17 @@ brew install --cask wavelab
   `eventideaudio.com/downloads/blackhole-installer-mac-64-bit/`) 302-redirect
   to a versioned CDN URL; the casks point at that resolved URL directly, so
   bump `version`/`url`/`sha256` manually on new releases.
+- `tape`, `dirty-tape`, `acoustic-feedback`, `clipper`, and `transient-shaper`
+  are Softube plugins shipped as flat (non-distribution) `.pkg` installers,
+  so the casks use a plain `pkg` artifact with no install script. Each pkg's
+  `PackageInfo` declares a single top-level identifier (e.g.
+  `com.softube.pkg.PlugIns_Tape`) that matches the receipt `pkgutil` records
+  on install, so `uninstall pkgutil:` with that identifier removes every file
+  the bom installed (VST/VST3/AU/AAX, SSX, and factory presets, all under
+  `/Library`). The only thing left behind is each plugin's Studio One preset
+  copy (only created if Studio One is installed), which `zap` removes. The
+  download URL embeds both the version (`2.6.38`) and a release build suffix
+  (`02148737`) that aren't necessarily in lockstep, so livecheck is skipped
+  and both segments need a manual bump on new releases; the CDN domain also
+  differs from the homepage domain, so `url` carries a `verified:` parameter
+  (same pattern Homebrew's own `softube-central` cask uses).
