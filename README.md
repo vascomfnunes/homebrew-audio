@@ -19,6 +19,7 @@ brew install --cask wavelab
 | `plugin-alliance-installation-manager` | Manager for installing/updating Plugin Alliance plugins |
 | `roland-cloud-manager` | Manager for installing/updating Roland Cloud instruments and effects |
 | `ssl-download-manager` | Manager for installing/updating Solid State Logic plugins |
+| `xln-online-installer` | Manager for installing/updating XLN Audio products |
 
 ## Notes
 
@@ -46,3 +47,11 @@ brew install --cask wavelab
   in `audit_min_os`) on casks that omit `depends_on macos:`. Worked around
   by declaring `depends_on macos: :monterey` explicitly, which is accurate
   anyway.
+- XLN's own download endpoint (`https://www.xlnaudio.com/api/download/96`)
+  redirects to its S3-hosted installer, but the `Location` header contains
+  unencoded spaces, which breaks Homebrew's URI parser on both `brew audit`
+  and a real `brew fetch`/`install` (not just an audit quirk). The
+  `xln-online-installer` cask points directly at the resolved,
+  percent-encoded S3 URL instead. That URL embeds the version, so it goes
+  stale on new releases — update `version`, `url`, and `sha256` manually,
+  same as `wavelab`.
