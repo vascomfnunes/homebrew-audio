@@ -23,12 +23,16 @@ brew install --cask wavelab
 | `blackhole` | Eventide reverb plugin (VST3/AU/AAX) |
 | `blackhole-immersive` | Eventide immersive/spatial reverb plugin (VST3/AU/AAX) |
 | `fixate-midrange` | Newfangled Audio (Eventide) dynamic midrange EQ plugin (VST3/AU/AAX) |
-| `micropitch` | Eventide stereo pitch-shifting/doubling plugin (VST3/AU/AAX) |
 | `tape` | Softube analog tape machine emulation plugin (VST/VST3/AU/AAX) |
 | `dirty-tape` | Softube lo-fi tape distortion and saturation plugin (VST/VST3/AU/AAX) |
 | `acoustic-feedback` | Softube guitar feedback simulation plugin (VST/VST3/AU/AAX) |
 | `clipper` | Softube peak-clipping plugin for mixing and mastering (VST/VST3/AU/AAX) |
 | `transient-shaper` | Softube dual-band attack/decay shaping plugin (VST/VST3/AU/AAX) |
+| `crystallizer` | Soundtoys granular echo and reverse pitch-shifting plugin (VST/VST3/AU/AAX) |
+| `echoboy` | Soundtoys echo and delay plugin (VST/VST3/AU/AAX) |
+| `little-microshift` | Soundtoys stereo-widening pitch-shifting plugin (VST/VST3/AU/AAX) |
+| `little-plate` | Soundtoys EMT 140 plate reverb plugin (VST/VST3/AU/AAX) |
+| `phasemistress` | Soundtoys analog-modeled phaser plugin (VST/VST3/AU/AAX) |
 
 ## Notes
 
@@ -64,7 +68,7 @@ brew install --cask wavelab
   percent-encoded S3 URL instead. That URL embeds the version, so it goes
   stale on new releases — update `version`, `url`, and `sha256` manually,
   same as `wavelab`.
-- `blackhole`, `blackhole-immersive`, `fixate-midrange`, and `micropitch` are
+- `blackhole`, `blackhole-immersive`, and `fixate-midrange` are
   Eventide/Newfangled Audio plugins shipped as BitRock InstallBuilder
   installer apps with no GUI fallback needed: they support a real silent
   install via `installbuilder.sh --mode unattended`, so the casks use
@@ -90,3 +94,23 @@ brew install --cask wavelab
   and both segments need a manual bump on new releases; the CDN domain also
   differs from the homepage domain, so `url` carries a `verified:` parameter
   (same pattern Homebrew's own `softube-central` cask uses).
+- `crystallizer`, `echoboy`, `little-microshift`, `little-plate`, and
+  `phasemistress` are Soundtoys plugins shipped as a `.dmg` wrapping a
+  distribution `.pkg` (`Install <Name>.pkg`), so the casks use a `pkg`
+  artifact. Each installer registers per-format receipts under a shared
+  identifier prefix (e.g. `com.soundtoys.Crystallizer5.au`, `.vst3`, `.aax`,
+  `.vst2`, `.preflight`), so `uninstall pkgutil:` takes a regexp matching the
+  whole `com.soundtoys.<Name>5.*` set, which removes every file the bom
+  installed under `/Library`. The installer also bundles iLok License Manager
+  and PACE Eden components under their own `com.paceap.*` receipts; those are
+  shared infrastructure and deliberately left untouched. The only per-plugin
+  leftover is each plugin's preferences plist
+  (`~/Library/Preferences/com.soundtoys.<name>.plist`), which `zap` removes.
+  The download URL embeds the full build version (`5.5.4.18982`) in the path,
+  so livecheck is skipped and `version`/`url`/`sha256` need a manual bump on
+  new releases; the Google Cloud Storage host differs from the homepage
+  domain, so `url` carries a `verified:` parameter. A `pkg` cask is flagged
+  macOS-only by `brew style`, so each declares `depends_on macos: :big_sur`
+  (the lowest currently-supported minimum Homebrew still accepts as a bare
+  version symbol — `:high_sierra`, the plugins' true historical floor, is
+  disabled).
