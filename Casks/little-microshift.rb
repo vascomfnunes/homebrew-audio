@@ -1,6 +1,6 @@
 cask "little-microshift" do
-  version "5.5.4.18982"
-  sha256 "7fb184baa7bac4afe1f8e70a1b17bac194cdcb8e04c2516ff8909fb42177f48d"
+  version "5.5.5.19885"
+  sha256 "15d384e31f9272729d7fa2332efdaa2c52c3f004e9701afc2acbccf58a4bf48a"
 
   url "https://storage.googleapis.com/soundtoys-download/versions/version_#{version.dots_to_underscores}/LittleMicroShift5_#{version}.dmg",
       verified: "storage.googleapis.com/soundtoys-download/"

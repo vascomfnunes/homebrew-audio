@@ -1,6 +1,6 @@
 cask "phasemistress" do
-  version "5.5.4.18982"
-  sha256 "22b0fccff1304490cbe43d7f146d1a6e2da6a49de3c38b350f8a274909785422"
+  version "5.5.5.19885"
+  sha256 "65d9d139dbd365d24558a26a9c74f0617e0c7e57455bd52d740e4e3ed4c4707e"
 
   url "https://storage.googleapis.com/soundtoys-download/versions/version_#{version.dots_to_underscores}/PhaseMistress5_#{version}.dmg",
       verified: "storage.googleapis.com/soundtoys-download/"

@@ -1,6 +1,6 @@
 cask "echoboy" do
-  version "5.5.4.18982"
-  sha256 "c50cbeea56e66ea5420dd6ed311dca01712e2ff79faaccadd6e7c9cccae22de9"
+  version "5.5.5.19885"
+  sha256 "f1d37a03fdf3fc9fecdb462d0ac5a6a5faae19f27e6b934275a9e7adbbccf344"
 
   url "https://storage.googleapis.com/soundtoys-download/versions/version_#{version.dots_to_underscores}/EchoBoy5_#{version}.dmg",
       verified: "storage.googleapis.com/soundtoys-download/"

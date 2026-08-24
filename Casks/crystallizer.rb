@@ -1,6 +1,6 @@
 cask "crystallizer" do
-  version "5.5.4.18982"
-  sha256 "ee2d332f6c66891061ac2d07364ae78fd93407863c719e714aa59ceee144eac2"
+  version "5.5.5.19885"
+  sha256 "560f0479508a7624a0963767517db1c242398119f16d0f1228a2ffaf0957643c"
 
   url "https://storage.googleapis.com/soundtoys-download/versions/version_#{version.dots_to_underscores}/Crystallizer5_#{version}.dmg",
       verified: "storage.googleapis.com/soundtoys-download/"

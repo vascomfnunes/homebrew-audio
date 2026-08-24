@@ -1,6 +1,6 @@
 cask "little-plate" do
-  version "5.5.4.18982"
-  sha256 "1fc2e1a6819ff3255dd18bddf47ebf1ba589d6d85a1710de9b5b950932e1771d"
+  version "5.5.5.19885"
+  sha256 "7be4d7b756d92d0e7a88c69543e636876b7732f3442ab313703115236c83e687"
 
   url "https://storage.googleapis.com/soundtoys-download/versions/version_#{version.dots_to_underscores}/LittlePlate5_#{version}.dmg",
       verified: "storage.googleapis.com/soundtoys-download/"
