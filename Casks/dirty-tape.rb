@@ -2,8 +2,7 @@ cask "dirty-tape" do
   version "2.6.38"
   sha256 "b71401653b0abec4cf6201a867b4d835c02b9d2e855a342e10df4200a26ac5cb"
 
-  url "https://softubestorage.b-cdn.net/stable/release-arch-enemy-2/Softube%20Dirty%20Tape%20Installer%20#{version}%2002148737.pkg",
-      verified: "softubestorage.b-cdn.net/"
+  url "https://softubestorage.b-cdn.net/stable/release-arch-enemy-2/Softube%20Dirty%20Tape%20Installer%20#{version}%2002148737.pkg"
   name "Softube Dirty Tape"
   desc "Softube lo-fi tape distortion and saturation plugin (VST/VST3/AU/AAX)"
   homepage "https://www.softube.com/plug-ins/dirty-tape"

@@ -2,8 +2,7 @@ cask "plugin-alliance-installation-manager" do
   version "1.4.0"
   sha256 "524b79d03170653d28e835cb4d6ec2ee20a0123c0f6f9d73194cec5fd39189b8"
 
-  url "https://pluginalliance.myshopify.com/cdn/shop/files/pa_installation_manager_mac_#{version.gsub(".", "_")}.zip",
-      verified: "pluginalliance.myshopify.com/cdn/shop/files/"
+  url "https://pluginalliance.myshopify.com/cdn/shop/files/pa_installation_manager_mac_#{version.gsub(".", "_")}.zip"
   name "Plugin Alliance Installation Manager"
   desc "Manager for installing and updating Plugin Alliance/Brainworx plugins"
   homepage "https://www.plugin-alliance.com/"

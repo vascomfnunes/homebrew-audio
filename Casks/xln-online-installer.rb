@@ -2,8 +2,7 @@ cask "xln-online-installer" do
   version "4.4.0"
   sha256 "3e90521723a288664354baf2e9e4214b21e661b9ff152658155f7407e0d4b533"
 
-  url "https://xlnaudio.s3.amazonaws.com/products/XLN%20Online%20Installer/#{version.tr(".", "_")}%20Release9/downloadables/XLN%20Online%20Installer.dmg",
-      verified: "xlnaudio.s3.amazonaws.com/products/"
+  url "https://xlnaudio.s3.amazonaws.com/products/XLN%20Online%20Installer/#{version.tr(".", "_")}%20Release9/downloadables/XLN%20Online%20Installer.dmg"
   name "XLN Online Installer"
   desc "Manager for installing and updating XLN Audio products"
   homepage "https://www.xlnaudio.com/"
